@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head', {route:'forms.css', main:'main.css',
+  title:'Registro'})%>
+
+  <body>
+    <%- include('../partials/navbar_forms') %>
+
+    <!-- Inicio del Main-->
+    <main class="main">
+      <section class="form__container">
+        <div class="form__header">
+          <img src="../img/icons/register.png" alt="" class="header__image" />
+          <h2 class="header__title">Registra tu usuario</h2>
+          <p class="header__text">Ingresa tus datos</p>
+        </div>
+        <form action="/users/register" method="POST">
+          <div class="input__container">
+            <img src="../img/icons/user.png" alt="" class="input__image" />
+            <input
+              type="text"
+              name="user"
+              class="form__input <%= locals.errors && errors.user ? 'form__input--error' : null %>"
+              placeholder="Nombre de usuario"
+              value="<%= locals.oldData ? oldData.user : null %>"
+            />
+            <% if (locals.errors && errors.user) { %>
+            <div class="text-danger"><%= errors.user.msg %></div>
+            <% } %>
+          </div>
+          <div class="input__container">
+            <img src="../img/icons/user.png" alt="" class="input__image" />
+            <input
+              type="email"
+              name="email"
+              class="form__input <%= locals.errors && errors.email ? 'form__input--error' : null %>"
+              placeholder="Email"
+              value="<%= locals.oldData ? oldData.email : null %>"
+            />
+            <% if (locals.errors && errors.email) { %>
+            <div class="text-danger"><%= errors.email.msg %></div>
+            <% } %>
+          </div>
+          <div class="input__container">
+            <img src="../img/icons/password.png" alt="" class="input__image" />
+            <input
+              type="password"
+              name="password"
+              class="form__input <%= locals.errors && errors.password ? 'form__input--error' : null %>"
+              placeholder="Contraseña"
+            />
+            <% if (locals.errors && errors.password) { %>
+            <div class="text-danger"><%= errors.password.msg %></div>
+            <% } %>
+          </div>
+          <div class="input__container">
+            <img src="../img/icons/password.png" alt="" class="input__image" />
+            <input
+              type="password"
+              name="password_confirm"
+              class="form__input <%= locals.errors && errors.password_confirm ? 'form__input--error' : null %>"
+              placeholder="Confirma tu contraseña"
+            />
+            <% if (locals.errors && errors.password_confirm) { %>
+            <div class="text-danger"><%= errors.password_confirm.msg %></div>
+            <% } %>
+          </div>
+          <button class="form__button" type="submit">Registrarme</button>
+        </form>
+      </section>
+    </main>
+    <!-- Fin del Main-->
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

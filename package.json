@@ -1,0 +1,32 @@
+{
+  "name": "urbanfurniture",
+  "version": "1.0.0",
+  "description": "E-commerce de muebles de interior y decoración del hogar.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThiagoLopezA/grupo_1_urbanfurniture.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThiagoLopezA/grupo_1_urbanfurniture/issues"
+  },
+  "homepage": "https://github.com/ThiagoLopezA/grupo_1_urbanfurniture#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.14.0",
+    "method-override": "^3.0.0",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7"
+  }
+}

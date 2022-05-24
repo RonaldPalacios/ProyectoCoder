@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head', {route:'forms.css', main:'main.css',
+  title:'Iniciar sesión'})%>
+
+  <body>
+    <%- include('../partials/navbar_forms') %>
+
+    <!-- Inicio del Main-->
+    <main class="main">
+      <section class="form__container">
+        <div class="form__header">
+          <img src="../img/icons/user-login.png" alt="" class="header__image" />
+          <h2 class="header__title">Iniciar sesión</h2>
+          <p class="header__text">Ingresa tus credenciales</p>
+        </div>
+        <form action="/users/login" method="POST">
+          <div class="input__container">
+            <img src="../img/icons/user.png" alt="" class="input__image" />
+            <input
+              type="email"
+              name="email"
+              class="form__input <%= locals.errors && errors.email ? 'form__input--error' : null %>"
+              placeholder="Email"
+              value="<%= locals.oldData ? oldData.email : null %>"
+            />
+            <% if (locals.errors && errors.email) { %>
+            <div class="text-danger"><%= errors.email.msg %></div>
+            <% } %>
+          </div>
+          <div class="input__container">
+            <img src="../img/icons/password.png" alt="" class="input__image" />
+            <input
+              type="password"
+              name="password"
+              class="form__input <%= locals.errors && errors.password ? 'form__input--error' : null %>"
+              placeholder="Contraseña"
+            />
+            <% if (locals.errors && errors.password) { %>
+            <div class="text-danger"><%= errors.password.msg %></div>
+            <% } %>
+          </div>
+          <div class="checkbox__container">
+            <input
+              type="checkbox"
+              class="input__checkbox"
+              name="remember_user"
+            /><label class="label__checkbox">Recordar contraseña</label>
+          </div>
+          <button class="form__button" type="submit">Ingresar</button>
+        </form>
+        <a href="/users/register">
+          <button class="form__button form__button--secondary">
+            Crear cuenta nueva
+          </button>
+        </a>
+      </section>
+    </main>
+    <!-- Fin del Main-->
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

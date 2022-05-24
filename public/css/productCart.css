@@ -1,0 +1,290 @@
+/* <-- Google fonts --> */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap");
+* {
+  font-family: Roboto;
+}
+h3 {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+.section-shop h3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.main-cart {
+  background-color: #ececec;
+  margin-top: 2rem;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  border-bottom: rgba(196, 196, 196, 0.33) solid 1px;
+}
+.imagenes {
+  background-color: rgba(196, 196, 196, 0.33);
+  padding: 20px 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+.imagenes img {
+  align-self: center;
+  width: 14rem;
+  height: 14rem;
+}
+.descuento {
+  color: #39d54a;
+  font-weight: 400;
+}
+.description-cant p {
+  color: #909090;
+  font-size: 0.9rem;
+}
+.precio-anterior {
+  text-decoration: line-through;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #909090;
+  font-size: 0.7rem;
+}
+.product-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: rgba(196, 196, 196, 0.33) solid 1px;
+}
+.precio-descuento {
+  display: flex;
+  justify-content: space-between;
+  color: #909090;
+  font-size: 0.9rem;
+}
+.subtotal {
+  display: flex;
+  flex-direction: column;
+}
+.letra-subtotal {
+  color: #909090;
+  font-size: 0.9rem;
+}
+#cant {
+  background-color: #fff;
+  border: none;
+  padding: 8px 20px;
+}
+.total {
+  font-weight: 900;
+  font-size: 1.4rem;
+  margin-top: 0.3rem;
+}
+.your-shop {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(196, 196, 196, 0.33);
+  padding: 3.36rem;
+}
+.your-shop h3 {
+  display: inline-block;
+  padding-bottom: 40px;
+}
+.section-shop {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.section-before-total {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: rgba(196, 196, 196, 0.33) solid 1px;
+  padding-bottom: 10px;
+  color: #909090;
+  font-size: 0.9rem;
+}
+.section-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+.word-total {
+  color: #909090;
+  font-size: 1.05rem;
+}
+.cp {
+  font-size: 0.9rem;
+}
+.final {
+  font-weight: 900;
+  font-size: 20px;
+}
+.datos {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+.boton-postal {
+  background-color: #fff;
+  color: rgba(196, 196, 196, 0.33);
+  font-size: 10px;
+  border: 1px rgba(196, 196, 196, 0.33) solid;
+  padding: 0.5rem 2rem;
+  border-radius: 0.2rem;
+  width: 100%;
+  text-align: center;
+}
+.terminos-condiciones {
+  font-size: 12px;
+  color: #909090;
+  margin-top: 1rem;
+}
+button {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.2rem;
+  border: none;
+  background-color: #909090;
+}
+.telephone-service {
+  font-size: 12px;
+  border-radius: 0.2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.atencion {
+  color: #909090;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.contacto-tel {
+  color: #ce5009;
+}
+
+@media (min-width: 769px) {
+  .product-wrapper {
+    width: 80%;
+    justify-content: center;
+  }
+  .product {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .imagenes {
+    margin: 1.5rem;
+  }
+  .description-cant {
+    margin: 2rem;
+  }
+  .description-cant p {
+    margin-top: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  .description-price {
+    margin: 2rem;
+  }
+  .imagenes img {
+    align-self: center;
+    width: 10rem;
+    height: 10rem;
+  }
+  .main-cart {
+    display: flex;
+    flex-direction: row;
+  }
+  .your-shop {
+    background-color: #ececec;
+    padding: 1.2rem 3rem;
+  }
+  .section-shop {
+    border-radius: 10px;
+    background-color: rgba(196, 196, 196, 0.33);
+    padding: 1.2rem;
+  }
+  .telephone-service {
+    border-radius: 10px;
+    background-color: rgba(196, 196, 196, 0.33);
+    padding: 1.2rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  .total {
+    font-size: 1rem;
+  }
+  .descuento {
+    font-size: 0.7rem;
+    padding-left: 0.2rem;
+  }
+  .precio-anterior {
+    margin-top: 0;
+  }
+  .telephone-service {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+  }
+  .terminos-condiciones {
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+  .datos {
+    margin-top: 0.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .product-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+  .product {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .imagenes {
+    margin: 3rem;
+  }
+  .description-cant {
+    margin: 2rem;
+  }
+  .description-cant p {
+    margin-top: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  .description-price {
+    margin: 2rem;
+  }
+  .imagenes img {
+    align-self: center;
+    width: 10rem;
+    height: 10rem;
+  }
+  .main-cart {
+    display: flex;
+    flex-direction: row;
+  }
+  .telephone-service {
+    margin-top: 1.5rem;
+  }
+  h3 {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+  .total {
+    font-size: 1rem;
+  }
+  .descuento {
+    font-size: 0.7rem;
+    padding-left: 0.2rem;
+  }
+  .precio-anterior {
+    margin-top: 1.5rem;
+  }
+  button {
+    margin-top: 0.5rem;
+  }
+  .datos {
+    margin-top: 0.5rem;
+  }
+  .imagenes img {
+    width: 13rem;
+    height: 13rem;
+  }
+}

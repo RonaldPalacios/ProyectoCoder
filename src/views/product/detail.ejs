@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head', {route:'product.css', main:'main.css',
+  title:'Detalle'})%>
+  <body>
+    <%- include('../partials/navbar.ejs') %>
+    <main class="main">
+      <section class="card__body">
+        <div class="card__image">
+          <img
+            class="card__decoration"
+            src="/img/backgrounds/background2.png"
+            alt=""
+          />
+          <img
+            class="position-product"
+            src="/img/products/<%=product.image%>"
+            alt="Producto"
+          />
+        </div>
+        <div class="card__text">
+          <h1><%= product.name %></h1>
+          <p><%= product.description %></p>
+          <div class="seleccion-color">
+            <div class="color rojo activa"></div>
+            <div class="color azul"></div>
+            <div class="color verde"></div>
+          </div>
+          <h2 class="number-price">$<%= product.finalPrice %></h2>
+          <button class="button-add-to-cart">
+            <i class="fa-solid fa-cart-plus"></i> Agregar
+          </button>
+        </div>
+      </section>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
