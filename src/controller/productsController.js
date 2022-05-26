@@ -34,16 +34,16 @@ const productController = { //creo un controlador para todas las vistas de produ
       productCart: (req, res) => {
         let productData = [
           {
-            src: "../img/products/product-3.png",
+            src: "../img/products/mesa1.jpg",
             precioAnt: 30785,
             precio: 27690,
-            nombre: "Silla Bulgaria",
+            nombre: "mesa Gamer",
           },
           {
-            src: "../img/products/product-2.png",
+            src: "../img/products/sillas1.jpg",
             precioAnt: 30785,
             precio: 27690,
-            nombre: "Silla Ferragamo",
+            nombre: "Silla Gamer",
           },
         ];
         res.render("product/productCart", { data: productData });
