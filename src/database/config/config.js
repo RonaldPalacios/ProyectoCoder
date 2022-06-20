@@ -2,7 +2,7 @@ module.exports = {
   "development": {
     "username": "root",
     "password": '',
-    "database": "3picgame",
+    "database": "epicgame",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
