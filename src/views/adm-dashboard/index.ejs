@@ -34,7 +34,7 @@
             <th><i class="fa-solid fa-align-left table__icon"></i></th>
             <th class="table__title">Ultimos productos ingresados</th>
           </tr>
-          <% for(let i = 0; i < 10; i++) { %>
+          <% for(let i = 0; i < products.length; i++) { %>
             <tr class="table__row">
               <td><%= products[i].dataValues.idproducts %></td>
               <td><%= products[i].dataValues.name %></td>

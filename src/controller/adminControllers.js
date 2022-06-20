@@ -20,7 +20,8 @@ const adminController = {
         ],
       })*/
       let url = req.url;
-      res.render("adm-dashboard/index", { url, product, /*users*/ });
+      console.log(product)
+      res.render("adm-dashboard/index", { url, products: product, /*users*/ });
     }catch (e){
       res.send('error:'+ e);
     }
