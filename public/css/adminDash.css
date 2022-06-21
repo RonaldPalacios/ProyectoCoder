@@ -102,8 +102,8 @@ a {
   flex-direction: column;
 }
 .card__resume{
-  background-color: #03091c;
-  color: #f3f3f3;
+  background-color: /*#03091c*/ #00ff00;
+  color: #03091c;
   display: flex;
   justify-content: space-between;
   font-family: Roboto;
