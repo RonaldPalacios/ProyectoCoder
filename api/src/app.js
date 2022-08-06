@@ -1,5 +1,6 @@
 import express from 'express';
 import productRouter from "./v1/routes/productsRouter.js";
+import userRouter from './V1/routes/userRoutes.js';
 
 const app = express();
 
@@ -9,4 +10,5 @@ app.listen(PORT, () =>{
 console.log(`API is listening on port ${PORT}`);
 });
 
-app.use("/products", productRouter);
+app.use("/api/products", productRouter);
+app.use('/api/user', userRouter);

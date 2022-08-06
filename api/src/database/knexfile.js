@@ -6,11 +6,11 @@
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: 'mysql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'epicgame',
+      user:     'root',
+      password: ''
     },
     pool: {
       min: 2,
