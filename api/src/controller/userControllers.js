@@ -1,4 +1,5 @@
-import db from '../database/db';
+import db from '../database/models';
+
 
 module.exports = {
     getUsers: async (req, res) => {

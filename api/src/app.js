@@ -1,14 +1,10 @@
 import express from 'express';
-import productRouter from "./v1/routes/productsRouter.js";
-import userRouter from './V1/routes/userRoutes.js';
+import productsRouter from "./v1/routes/productsRoutes";
+import userRouter from './v1/routes/userRoutes.js';
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () =>{
-console.log(`API is listening on port ${PORT}`);
-});
-
-app.use("/api/products", productRouter);
+app.use("/api/products", productsRouter);
 app.use('/api/user', userRouter);
+
+export default app;
