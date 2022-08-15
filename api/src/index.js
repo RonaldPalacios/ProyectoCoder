@@ -2,5 +2,6 @@ import app from './app';
 
 
 
-app.listen(app.get('port'));
-console.log('Server online port', 4001);
+app.listen(4001, () =>
+  console.log("Servidor levantado con exito en el puerto 4001")
+);

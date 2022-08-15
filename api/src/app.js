@@ -4,7 +4,10 @@ import userRouter from './v1/routes/userRoutes.js';
 
 const app = express();
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 app.use("/api/products", productsRouter);
 app.use('/api/user', userRouter);
+
 
 export default app;

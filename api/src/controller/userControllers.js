@@ -1,5 +1,5 @@
 import db from '../database/models';
-
+import sendMail from "../service/mail";
 
 module.exports = {
     getUsers: async (req, res) => {
@@ -32,7 +32,10 @@ module.exports = {
     },
     createUser: async (req, res)=> {
         try{
-            await db.User.create(req.body),
+            console.log(req.body)
+            await db.User.create(req.body);
+            let subject = "Creacion de usuario";
+            sendMail(req.body, subject);
             res.status(200).json({
                 status:200,
                 message: 'Se creo el usuario correctamente',
@@ -73,4 +76,13 @@ module.exports = {
           });
         }
       },
+    // sendWelcomeEmail: (req, res) => {
+    //     let user = db.User.findOne({
+    //         attributes: ["first_name", "last_name", "phone", "email"]
+    //     })
+        
+    //     let subject = "Creacion de usuario";
+    //     sendMail(user, "welcome", subject);
+    //     res.sendStatus(200)
+    // }
 };
