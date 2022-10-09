@@ -1,15 +1,41 @@
-import db from '../database/models';
+import UserService from '../service/database/user.database';
+import { ERROR_MESSAGES } from "../utils";
 import sendMail from "../service/mail";
 
-module.exports = {
-    getUsers: async (req, res) => {
+const userService = new UserService();
+
+let Users = {
+    createUser: async(req, res) => {
         try {
-            let users = await db.User.findAll();
+            const { password, email} = req.body;
+            console.log("Paso 1")
+            const userInDb = await userService.getbyEmail(email);
+            console.log("Paso 2")
+            if (userInDb) {
+                return res.sendStatus(200);
+            } else {
+                console.log("Paso 3")
+                await userService.create( password, email);
+                console.log("Paso 4")
+                sendMail(email, "Creación de usuario");
+                console.log("Paso 5")
+                return res.sendStatus(201);
+            }
+        } catch (e) {
+            res.status(500).json({
+                message: ERROR_MESSAGES.CONTROLLER_ERROR,
+                error: e,
+            });
+        }
+    },
+    getAll: async(req , res)=>{
+        try {
+           await UserService.getAll()
             res.status(200).json({
-                count: users.leght,
-                users,
-            }); 
-        }catch(e){
+                status: 200,
+                user,
+               }) 
+        } catch (e) {
             res.status(500).json({
                 message: 'Error en el intento',
                 error: e,
@@ -18,7 +44,7 @@ module.exports = {
     },
     getUserById: async(req, res)=>{
         try{
-            let user = await db.User.findOne ({where: {iduser: req.params.id}});
+            let user = await UserService.User.findOne ({where: {iduser: req.params.id}});
            res.status(200).json({
             status: 200,
             user,
@@ -30,26 +56,10 @@ module.exports = {
             });
         }
     },
-    createUser: async (req, res)=> {
-        try{
-            console.log(req.body)
-            await db.User.create(req.body);
-            let subject = "Creacion de usuario";
-            sendMail(req.body, subject);
-            res.status(200).json({
-                status:200,
-                message: 'Se creo el usuario correctamente',
-            });
-        }catch(e){
-            res.status(500).json({
-                message: 'No se pudo crear el usuario',
-                error: e,
-            });
-        }
-    },
+    
     updateUser: async (req, res)=>{
         try{
-            await db.User.update(req.body, {where: {iduser: req.params.id}});
+            await UserService.User.update(req.body, {where: {iduser: req.params.id}});
             res.status(200).json({
                status: 200,
                message: 'Se actualizo correctamente',     
@@ -64,7 +74,7 @@ module.exports = {
     },
     deleteUser: async (req, res) => {
         try {
-         await db.User.destroy({ where: { idusers: req.params.id } })
+         await UserService.User.destroy({ where: { idusers: req.params.id } })
          res.status(200).json({
           status: 200,
           message: "Usuario elimado correctamente"
@@ -86,3 +96,5 @@ module.exports = {
     //     res.sendStatus(200)
     // }
 };
+
+export default Users;

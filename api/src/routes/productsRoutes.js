@@ -1,4 +1,4 @@
-import { Router } from "express";
+/*import { Router } from "express";
 import productcontroller from "../../controller/productController"
 const productsRouter = Router();
 
@@ -10,4 +10,4 @@ productsRouter.put("/update/:id", productcontroller.updateProduct);
 productsRouter.delete("/delete/:id", productcontroller.deleteProduct);
 
 
-export default productsRouter;
+export default productsRouter;*/

@@ -1,4 +1,4 @@
-import db from '../database/models';
+/*import db from '../database/models';
 import sequelize from 'sequelize';
 
 
@@ -154,3 +154,4 @@ module.exports = {
     }
   },
 };
+*/

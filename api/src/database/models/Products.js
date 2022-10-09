@@ -1,7 +1,7 @@
 import { Model } from 'sequelize';
 
 export default (sequelize, DataTypes) => {
-  class User extends Model {
+  class Product extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,19 +11,27 @@ export default (sequelize, DataTypes) => {
       // define association here
     }
   };
-  User.init({
-    idusers:{type:  DataTypes.STRING, primaryKey:true},
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    phone: DataTypes.STRING,
-    password: DataTypes.STRING,
-    lastName: DataTypes.DATE,
+  Product.init({
+    idproducts:
+    {type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement : true},
+
+    imagen: DataTypes.STRING(45),
+
+    discount: DataTypes.FLOAT,
+
+    price: DataTypes.FLOAT,
+
+    name: DataTypes.STRING(100),
+
+    descriptions: DataTypes.STRING(100),
     
   }, {
     sequelize,
-    modelName: 'User',
-    tableName: 'users',
+    modelName: 'Product',
+    tableName: 'products',
     timestamps: false
   });
-  return User;
+  return Product;
 };
