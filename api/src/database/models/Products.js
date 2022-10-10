@@ -2,13 +2,16 @@ import { Model } from 'sequelize';
 
 export default (sequelize, DataTypes) => {
   class Product extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    
     static associate(models) {
-      // define association here
+      Product.belongsTo(models.Category, {
+        as: 'categories',
+        foreignKey: 'categories_idcategories',
+    });
+    Product.hasMany(models.Feedback, {
+        as: 'feedbacks',
+        foreignKey: "products_idproducts",
+    });
     }
   };
   Product.init({
@@ -17,15 +20,19 @@ export default (sequelize, DataTypes) => {
     primaryKey: true,
     autoIncrement : true},
 
-    imagen: DataTypes.STRING(45),
+    image: DataTypes.STRING(45),
 
-    discount: DataTypes.FLOAT,
+    discount: DataTypes.INTEGER,
 
-    price: DataTypes.FLOAT,
+    price: DataTypes.INTEGER,
 
     name: DataTypes.STRING(100),
 
-    descriptions: DataTypes.STRING(100),
+    description: DataTypes.STRING(100),
+
+    categories_idcategories: DataTypes.INTEGER,
+
+    rating : DataTypes.INTEGER
     
   }, {
     sequelize,

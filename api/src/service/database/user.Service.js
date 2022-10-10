@@ -24,13 +24,13 @@ class UserService {
     }
 
     async delete(id) {
-        return await db.User.destroy({ where: {id:id, delete_ad:null} })
+        return await db.User.destroy({ where: {id:id, deleted_at:null} })
     }
 
     async update(user){
         let {id} = user;
         await db.User.update(user, {
-            where: {id:id, delete_ad: null}
+            where: {id:id, deleted_at: null}
         });
     }
 

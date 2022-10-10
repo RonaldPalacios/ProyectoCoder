@@ -1,0 +1,1 @@
+export { default as productAdapter } from "./product.adapter";

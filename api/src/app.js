@@ -1,5 +1,5 @@
 import express from 'express';
-
+import productsRouter from './routes/productsRoutes';
 import userRouter from './routes/userRoutes.js';
 import morgan from "morgan";
 
@@ -13,6 +13,7 @@ app.use(morgan('dev'))
 //routes//
 /*app.use("/api/products", productsRouter);*/
 app.use('/api/user', userRouter);
+app.use('/api/product', productsRouter);
 
 
 export default app;
