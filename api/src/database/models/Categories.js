@@ -4,7 +4,7 @@ export default (sequelize, DataTypes) => {
   class Categories extends Model {
     
     static associate(models) {
-        Category.hasMany(models.Product, {
+        Categories.hasMany(models.Product, {
             as: "products",
             foreignKey: "categories_idcategories",
           });

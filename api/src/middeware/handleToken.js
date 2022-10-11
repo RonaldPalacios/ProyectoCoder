@@ -1,5 +1,5 @@
 import JWT from 'jsonwebtoken'
-import { RESPONSE_MESSAGES } from '../utilities'
+/*import { RESPONSE_MESSAGES } from '../utilities'*/
 import 'dotenv/config'
 
 const handleToken = (req, res, next) => {

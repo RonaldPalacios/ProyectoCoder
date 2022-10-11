@@ -44,7 +44,7 @@ export default (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Location',
-    tableName: 'location',
+    tableName: 'locations',
     timestamps: false
   });
   return Location;

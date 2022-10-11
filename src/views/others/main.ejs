@@ -49,14 +49,16 @@
       <section class="section">
         <div class="section__title__wrapper">
           <h2 class="section__title">Nuestras ofertas</h2>
+          <a href="/product/inSale"></a>
           <button class="section__button">ver todas</button>
         </div>
-       <div class="section__products">
+        <div class="section__products">
           <!-- product list -->
-          <%- include('../partials/product_list', {data:data, mode:'user'}) %>
-          <div class="products__button">
-            <i class="fa-solid fa-arrow-right"></i>
-          </div> 
+          <%- include('../partials/product_list', {data:inSaleProducts}) %>
+          <a href="/product/inSale">
+            <div class="products__button">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
         </div> 
       </section>
       

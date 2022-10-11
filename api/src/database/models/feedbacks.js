@@ -32,8 +32,8 @@ export default (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "User",
-      tableName: "users",
+      modelName: "Feedback",
+      tableName: "feedbacks",
       timestamps: false,
     }
   );

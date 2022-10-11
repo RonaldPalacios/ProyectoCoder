@@ -13,7 +13,7 @@ app.use(morgan('dev'))
 //routes//
 /*app.use("/api/products", productsRouter);*/
 app.use('/api/user', userRouter);
-app.use('/api/product', productsRouter);
+app.use('/api/products', productsRouter);
 
 
 export default app;

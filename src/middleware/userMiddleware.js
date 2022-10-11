@@ -1,7 +1,26 @@
-module.exports = (req, res, next) => {
-    if (req.session.userLogged) {
-      next();
+const fetch = require("node-fetch");
+const { APIURL } = require("../config");
+
+function userLoggedMiddleware(req, res, next) {
+  res.locals.isLogged = false;
+
+  if (req.session && req.session.userLogged) {
+    res.locals.isLogged = true;
+    res.locals.userLogged = req.session.userLogged;
+    let emailInCookie = req.cookies.userEmail;
+    if (emailInCookie != undefined) {
+      fetch(`${APIURL}/users/email/${emailInCookie}`)
+        .then(user => {
+          if (user.status == 200) {
+            req.session.userLogged = user.user;
+          }
+        })
+        .catch(e => console.log(e));
     }
-    res.redirect("/");
-  };
+  }
+
+  next();
+}
+
+module.exports = userLoggedMiddleware;
   

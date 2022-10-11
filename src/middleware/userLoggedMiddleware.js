@@ -1,7 +1,6 @@
-const User = require("../database/models/User");
-const db = require("../database/models");
-
 // Middleware para que detecte si hay usurio logueado
+const { APIURL } = require("../config");
+const fetch = require("node-fetch");
 
 function userLoggedMiddleware(req, res, next) {
   res.locals.isLogged = false;
@@ -11,15 +10,13 @@ function userLoggedMiddleware(req, res, next) {
     res.locals.userLogged = req.session.userLogged;
     let emailInCookie = req.cookies.userEmail;
     if (emailInCookie != undefined) {
-      let userFromCookie = db.User.findOne({
-        where: { email: emailInCookie },
-      })
-        .then({
-          if(userFromCookie) {
-            req.session.userLogged = userFromCookie;
-          },
+      fetch(`${APIURL}/users/email/${emailInCookie}`)
+        .then(user => {
+          if (user.status == 200) {
+            req.session.userLogged = user.user;
+          }
         })
-        .catch(e => res.send(e));
+        .catch(e => console.log(e));
     }
   }
 

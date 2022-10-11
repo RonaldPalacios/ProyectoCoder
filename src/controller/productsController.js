@@ -1,185 +1,89 @@
-const res = require("express/lib/response");
-const fs = require("fs");
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const db = require("../database/models");
-const sequelize = require("sequelize");
-const Op = sequelize.Op;
+const fetch = require("node-fetch");
+const { APIURL } = require("../config");
 
-
-const productController = { //creo un controlador para todas las vistas de productos
-
+module.exports = {
   productCart: (req, res) => {
-    let productData = [{
-        src: "../img/products/mesa1.jpg",
+    let productData = [
+      {
+        src: "../img/products/product-3.png",
         precioAnt: 30785,
         precio: 27690,
-        nombre: "mesa Gamer",
+        nombre: "Silla Bulgaria",
       },
       {
-        src: "../img/products/sillas1.jpg",
+        src: "../img/products/product-2.png",
         precioAnt: 30785,
         precio: 27690,
-        nombre: "Silla Gamer",
+        nombre: "Silla Ferragamo",
       },
     ];
-    res.render("product/productCart", {
-      data: productData
-    });
+    res.render("product/productCart", { data: productData });
   },
-  detail: async (req, res) => { //detalle de los productos
+  detail: async (req, res) => {
     try {
-      let product = await db.Product.findOne({
-      attributes: [
-        "idproducts",
-        "image",
-        "discount",
-        "price",
-        "description",
-        "name",
-        "rating",
-        "categories_idcategories",
-        [sequelize.literal("price-discount*100/price"), "finalPrice"],
-      ],
-      where: {idproducts: req.params.id},
-      include: [{association: 'categories' }],
-     });   
-     let category = await db.Product.findAll({
-        attributes: [
-          "idproducts",
-          "image",
-          "discount",
-          "price",
-          "description",
-          "name",
-          "rating",
-          "categories_idcategories",
-          [sequelize.literal("price-discount*100/price"), "finalPrice"],
-        ],
-        where: { categories_idcategories: product.categories_idcategories },
-        limit: 4,
-      });     
-   res.render('product/detail', {product, sameCategory : category})
-    }catch(e) {
-      res.send('error:'+ e);
-  }
-  },
-  listAll: async(req, res) => { //todas los productos
-    try{
-      let category = await db.Product.findAll({
-        include: [{ association: "categories" }],
-        group: ["categories_idcategories"],
-        attributes: [
-          "categories_idcategories",
-         [ sequelize.fn("count", sequelize.col("categories_idcategories")),
-         
-         "count_cats",
-        ],
-      ],
-      })
-      let product = await db.Product.findAll({
-        include: [{ association: "categories" }],
-        attributes: [
-          "idproducts",
-          "image",
-          "discount",
-          "price",
-          "description",
-          "name",
-          "rating",
-          "categories_idcategories",
-          [sequelize.literal("price-discount*100/price"), "finalPrice"],
-        ],
-      })
-      res.render("product/products", {
-        data: product,
-        filtro: "Todos los productos",
-        categories: category,
+      let product = await fetch(
+        `${APIURL}/products/detail/${req.params.id}`
+      ).then(response => response.json());
+      let productsRelated = await fetch(
+        `${APIURL}/products/category/${product.idcategory}/4`
+      ).then(response => response.json());
+      let ableToAdd = false;
+      if (req.session.userLogged) {
+        ableToAdd = true;
+      }
+      res.render("product/detail", {
+        product,
+        productsRelated: productsRelated.products,
+        ableToAdd,
       });
-
-    }catch (e){
-      res.send('error:'+ e);
-    }
-  
-  },
-  listCategory: async (req, res) => {
-    try {
-      let category = await db.Product.findAll({
-        include: [{ association: "categories" }],
-        group: ["categories_idcategories"],
-        attributes: [
-          "categories_idcategories",
-          [
-            sequelize.fn("count", sequelize.col("categories_idcategories")),
-            "count_cats",
-          ],
-        ],
-      })
-      let product = await db.Product.findAll({
-        include: [{ association: "categories" }],
-        attributes: [
-          "idproducts",
-          "image",
-          "discount",
-          "price",
-          "description",
-          "name",
-          "rating",
-          "categories_idcategories",
-          [sequelize.literal("price-discount*100/price"), "finalPrice"],
-        ],
-        where: { categories_idcategories: req.params.category },
-      })
-      res.render("product/products", {
-        data: product,
-        filtro: products[0].categories.dataValues.nombre,
-        categories: category,
-      });
-    }catch (e){
-      res.send('error:'+ e);
+    } catch (e) {
+      console.log(e);
     }
   },
-
-  listBySearch: async (req, res) => { //Search
-   try {
-      let category = await db.Product.findAll({
-        include: [{ association: "categories" }],
-        group: ["categories_idcategories"],
-        attributes: [
-          "categories_idcategories",
-          [
-            sequelize.fn("count", sequelize.col("categories_idcategories")),
-            "count_cats",
-          ],
-        ],
-         })
-         let product = await db.Product.findAll({
-          where: {
-            name: {
-              [Op.like]: "%" + req.query.keywords + "%",
-            },
-          },
-          attributes: [
-            "idproducts",
-            "image",
-            "discount",
-            "price",
-            "description",
-            "name",
-            "rating",
-            "categories_idcategories",
-            [sequelize.literal("price-discount*100/price"), "finalPrice"],
-          ],
-         })
-         res.render("product/products", {
-          data: product,
-          filtro: req.query.keywords,
-          categories: category,
+  listAll: (req, res) => {
+    fetch(`${APIURL}/products`)
+      .then(response => response.json())
+      .then(products => {
+        res.render("product/products", {
+          data: products.products,
+          filtro: "Todos los productos",
+          categories: products.categories,
         });
-   }catch(e) {
-    res.send('error:'+ e);
-   };
-   
-  }
+      });
+  },
+  listCategory: (req, res) => {
+    fetch(`${APIURL}/products/category/${req.params.category}`)
+      .then(response => response.json())
+      .then(products => {
+        res.render("product/products", {
+          data: products.products,
+          filtro: products.category,
+          categories: products.categories,
+        });
+      })
+      .catch(e => console.log(e));
+  },
+  listBySearch: (req, res) => {
+    fetch(`${APIURL}/products/search/${req.query.keywords}`)
+      .then(response => response.json())
+      .then(products => {
+        res.render("product/products", {
+          data: products.products,
+          filtro: "Todos los productos",
+          categories: products.categories,
+        });
+      });
+  },
+  inSale: (req, res) => {
+    fetch(`${APIURL}/products/inSale`)
+      .then(response => response.json())
+      .then(products => {
+        res.render("product/products", {
+          data: products.products,
+          filtro: "En oferta",
+          categories: products.categories,
+        });
+      })
+      .catch(e => console.log(e));
+  },
 };
-
-module.exports = productController;

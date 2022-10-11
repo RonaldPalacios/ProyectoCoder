@@ -1,6 +1,6 @@
-import UserService from "../service/database/user.database";
 import { ERROR_MESSAGES } from "../utils";
-import sendMail from "../service/mail";
+import {UserService, sendMail} from '../service'
+import { userAdapter } from '../adapter';
 import bcrypt from 'bcryptjs'
 
 const userService = new UserService();
@@ -8,7 +8,7 @@ const userService = new UserService();
 let Users = {
   createUser: async (req, res) => {
     try {
-      const { password, email } = req.body;
+      const user = userAdapter(req.body)
       const userInDb = await userService.getbyEmail(email);
       if (userInDb) {
         return res.sendStatus(200);
@@ -16,10 +16,12 @@ let Users = {
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(user.password, salt);
         await userService.create(password, email);
-
-        sendMail(email, "Creación de usuario");
-
-        return res.sendStatus(201);
+        let subject = "Creacion de usuario";
+        sendMail(req.body, subject);
+        res.status(200).json({
+          status: 200,
+          message: 'Se creo el usuario correctamente',
+        });
       }
     } catch (e) {
       res.status(500).json({

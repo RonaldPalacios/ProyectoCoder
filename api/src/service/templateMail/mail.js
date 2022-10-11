@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import "dotenv/config"
-import template from './templateMail';
+import template from './template.user';
 
 
 const sendMail =  (data, subject) => {

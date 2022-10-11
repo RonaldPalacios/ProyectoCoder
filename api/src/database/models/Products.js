@@ -2,23 +2,25 @@ import { Model } from 'sequelize';
 
 export default (sequelize, DataTypes) => {
   class Product extends Model {
-    
+
     static associate(models) {
-      Product.belongsTo(models.Category, {
+      Product.belongsTo(models.Categories, {
         as: 'categories',
         foreignKey: 'categories_idcategories',
-    });
-    Product.hasMany(models.Feedback, {
+      });
+      Product.hasMany(models.Feedback, {
         as: 'feedbacks',
         foreignKey: "products_idproducts",
-    });
+      });
     }
   };
   Product.init({
     idproducts:
-    {type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement : true},
+    {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
 
     image: DataTypes.STRING(45),
 
@@ -32,8 +34,8 @@ export default (sequelize, DataTypes) => {
 
     categories_idcategories: DataTypes.INTEGER,
 
-    rating : DataTypes.INTEGER
-    
+    rating: DataTypes.INTEGER
+
   }, {
     sequelize,
     modelName: 'Product',
