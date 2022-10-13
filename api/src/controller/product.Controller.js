@@ -83,7 +83,7 @@ let Products = {
   },
   getProducts: async (req, res) => {
     try {
-      let products = await productService.getAll();
+      let products = await productService.findAll();
       let categories = await categorieService.getAll()
        
       categories.forEach(category => {
@@ -106,8 +106,8 @@ let Products = {
   },
   getProductsInSale: async (req, res) => {
     try {
-      let products = await productService.getdAll();
-      let categories = await categorieService.getdAll();
+      let products = await productService.findAll();
+      let categories = await categorieService.findAll();
       categories.forEach(category => {
         category.dataValues.products = category.dataValues.products.length;
       });
@@ -130,13 +130,14 @@ let Products = {
   getProductsOrdered: async (req, res) => {
     try {
       console.log('Paso 1');
-      let products = await productService.getAll();
-      console.log('Paso 1.5');
-      let categories = await categorieService.getAll();
-      console.log('Paso 2');
+      let products = await productService.findAll();
+      console.log(products);
+      console.log("Paso 2")
+      let categories = await categorieService.findAll();
+      console.log('Paso 3');
       categories.forEach(category => {
         category.dataValues.products = category.dataValues.products.length;
-        console.log('Paso 3');
+        console.log('Paso 4');
       });
       res.status(200).json({
         status: 200,
@@ -156,7 +157,7 @@ let Products = {
   },
   getProductsByCategory: async (req, res) => {
     try {
-      let products = await productService.getAll();
+      let products = await productService.findAll();
       let categories = await categorieService.getAll();
       categories.forEach(category => {
         category.dataValues.products = category.dataValues.products.length;
@@ -178,7 +179,7 @@ let Products = {
   },
   searchProducts: async (req, res) => {
     try {
-      let products = await productService.getAll();
+      let products = await productService.findAll();
       let categories = await categorieService.getAll();
       categories.forEach(category => {
         category.dataValues.products = category.dataValues.products.length;

@@ -24,24 +24,22 @@
               class="form__input"
               type="text"
               placeholder="Buscar productos..."
+              id="search"
             />
             <button class="form__button">Buscar</button>
           </form>
         </article>
         <article class="header__image">
-          <img class="image__item" src='/img/backgrounds/setup2.jpg' alt="" />
           <img
-            class="image__floor"
-            src="./img/backgrounds/background.png"
+            class="image__item"
+            src="/public/img/products/product-2.png"
             alt=""
           />
-          <div class="image__controls">
-            <div class="control__point"></div>
-            <div class="control__point"></div>
-            <div class="control__point"></div>
-            <div class="control__point"></div>
-            <div class="control__point"></div>
-          </div>
+          <img
+            class="image__floor"
+            src="/public/img/backgrounds/background.png"
+            alt=""
+          />
         </article>
       </section>
 
@@ -49,8 +47,9 @@
       <section class="section">
         <div class="section__title__wrapper">
           <h2 class="section__title">Nuestras ofertas</h2>
-          <a href="/product/inSale"></a>
-          <button class="section__button">ver todas</button>
+          <a href="/product/inSale">
+            <button class="section__button">ver todas</button>
+          </a>
         </div>
         <div class="section__products">
           <!-- product list -->
@@ -59,49 +58,53 @@
             <div class="products__button">
               <i class="fa-solid fa-arrow-right"></i>
             </div>
-        </div> 
+          </a>
+        </div>
       </section>
-      
+
       <!-- last-products section -->
-     
       <section class="section">
         <div class="section__title__wrapper">
           <h2 class="section__title">Ultimas cargas</h2>
-          <button class="section__button">ver todas</button>
+          <a href="/product">
+            <button class="section__button">ver todas</button>
+          </a>
         </div>
-        <div class="section__products"> 
+        <div class="section__products">
           <!-- product list -->
-          <%- include('../partials/product_list', {data:data, mode:'user'}) %>
-         <div class="products__button">
-            <i class="fa-solid fa-arrow-right"></i>
-          </div>
+          <%- include('../partials/product_list', {data:latestProducts}) %>
+          <a href="/product">
+            <div class="products__button">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
         </div>
-      </section> 
+      </section>
       <!-- info -->
       <section class="section__information">
         <article class="information__item">
-          <img src="./img/icons/credit-card.png" alt="" />
+          <img src="/public/img/icons/credit-card.png" alt="" />
           <h3 class="information__title">Hasta 24 cuotas</h3>
           <p class="information__description">
             Visa, Mastercard, Amex, Mercado Pago.
           </p>
         </article>
         <article class="information__item">
-          <img src="./img/icons/delivery.png" alt="" />
+          <img src="/public/img/icons/delivery.png" alt="" />
           <h3 class="information__title">Envio a todo el país</h3>
           <p class="information__description">
             A todo el país en tiempo record.
           </p>
         </article>
         <article class="information__item">
-          <img src="./img/icons/list.png" alt="" />
+          <img src="/public/img/icons/list.png" alt="" />
           <h3 class="information__title">Entrega inmediata</h3>
           <p class="information__description">
             Disponibilidad de stock permanente.
           </p>
         </article>
         <article class="information__item">
-          <img src="./img/icons/phone.png" alt="" />
+          <img src="/public/img/icons/phone.png" alt="" />
           <h3 class="information__title">Venta telefonica</h3>
           <p class="information__description">
             Tel. 4631-2022 Lun a Sab de 10 a 20hs.
@@ -114,4 +117,3 @@
     <%- include ('../partials/footer.ejs') %>
   </body>
 </html>
-

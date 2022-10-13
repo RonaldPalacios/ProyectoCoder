@@ -1,12 +1,13 @@
 import db from '../../database/models'
 
-const {categories} = db
+const {Categories} = db
 
 class CategorieService {
 
-async getAll() {
-    return await categories.findAll({ include: [{ association: "products", as: "p" }],
-    attributes: ["idcategories", "nombre"],
+async findAll() {
+    return await Categories.findAll({ 
+      include: [{ association: "products", as: "p" }],
+      attributes: ["idcategories", "nombre"],
   })
 }
 }

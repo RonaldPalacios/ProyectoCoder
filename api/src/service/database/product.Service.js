@@ -1,5 +1,5 @@
 import db from "../../database/models";
-
+import sequelize from "sequelize";
 const { Product } = db
 
 class ProductService {
@@ -30,7 +30,7 @@ class ProductService {
         });
     }
 
-    async getAll() {
+    async findAll() {
         return await Product.findAll({
             attributes: [
                 "idproducts",
@@ -43,7 +43,6 @@ class ProductService {
                 "categories_idcategories",
                 [sequelize.literal("price-discount*100/price"), "finalPrice"],
             ],
-            /*where: { idproducts: idproducts },*/
             include: [{ association: "categories" }],
         })
     }
