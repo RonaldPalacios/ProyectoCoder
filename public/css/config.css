@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.main{
+  min-height: 100vh;
+  padding: 0% 10%
+}
+.section__header{
+  width: 100%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: .2rem;
+}
+.header__title, .header__paragraph{
+  margin: 0;
+}
+.header__title{
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #404040
+}
+.header__paragraph{
+  margin-top: .9rem;
+  font-family: Roboto;
+  color: #909090;
+}
+.section__information{
+  background-color: #03091c;
+  padding: 1rem;
+  color: #f3f3f3;
+  border-radius: .2rem;
+  margin-top: 1rem;
+}
+.information__title{
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.information__paragraph{
+  font-size: .9rem;
+  font-family: Roboto;
+}
+.information__paragraph i{
+  font-size: .75rem;
+}
+.section__form{
+  width: 100%;
+  background-color: white;
+  padding: 1rem;
+}
+.form__group, .input__group{
+  display: flex;
+  flex-direction: column;
+}
+.form__label{
+  font-size: 1rem;
+  font-family: Roboto;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+.form__input{
+  margin-top: .5rem;
+  border: 1px solid #ececec;
+  padding: .5rem;
+  border-radius: .2rem;
+}
+.form__button{
+  width: 100%;
+  background-color: #03091c;
+  padding: 0.5rem;
+  border: none;
+  color: #f3f3f3;
+  font-family: Roboto;
+  font-weight: 600;
+  border-radius: .2rem;
+  margin-top: 1rem;
+}
+.form__subgroup{
+  display: flex;
+  justify-content: space-around;
+}
+.form__subgroup .form__input{
+  width: 100%;
+}
+.section__password-config{
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 900px){
+  .section__personal-data-config, .section__home-config, .section__password-config{
+    display: flex;
+  }
+  .section__information{
+    width: 40%;
+  }
+  .section__form{
+    margin-top: 1rem;
+    width: 60%;
+  }
+  .input__group{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .form__input{
+    width: 100%;
+  }
+  .form__group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .form__group .form__input{
+    width: 99%;
+  }
+}

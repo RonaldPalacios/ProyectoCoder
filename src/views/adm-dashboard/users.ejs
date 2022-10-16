@@ -8,21 +8,21 @@
       <article class="card__group">
         <div class="card__resume">
           <div class="resume__information">
-            <h2 class="information__quantity">1</h2>
+            <h2 class="information__quantity"><%=usersCount%></h2>
             <h4 class="information__title">Cantidad de usuarios</h4>
           </div>
           <i class="fa-solid fa-users information__icon"></i>
         </div>
         <div class="card__resume">
           <div class="resume__information">
-            <h2 class="information__quantity">2</h2>
+            <h2 class="information__quantity"><%=adminCount%></h2>
             <h4 class="information__title">Usuarios administrador</h4>
           </div>
           <i class="fa-solid fa-user-shield information__icon"></i>
         </div>
         <div class="card__resume">
           <div class="resume__information">
-            <h2 class="information__quantity">12</h2>
+            <h2 class="information__quantity"><%=clientsCount%></h2>
             <h4 class="information__title">Usuarios clientes</h4>
           </div>
           <i class="fa-solid fa-user information__icon"></i>
@@ -40,39 +40,65 @@
           <div class="modal__header">
             <i class="fa-solid fa-xmark close__icon"></i>
           </div>
-          <form action="/users/register" class="modal__form" method="POST">
+          <form
+            action="/users/register"
+            id="form"
+            class="modal__form"
+            method="POST"
+          >
             <div class="form__group">
-              <input
-                type="text"
-                class="form__input"
-                name="first_name"
-                placeholder="Nombre del usuario"
-              />
-              <input
-                type="text"
-                class="form__input"
-                name="last_name"
-                placeholder="Apellido"
-              />
+              <div class="group__input first-name">
+                <input
+                  type="text"
+                  class="form__input"
+                  name="first_name"
+                  id="firstName"
+                  placeholder="Nombre del usuario"
+                />
+                <p class="text-danger"></p>
+              </div>
+              <div class="group__input last-name">
+                <input
+                  type="text"
+                  class="form__input"
+                  name="last_name"
+                  id="lastName"
+                  placeholder="Apellido"
+                />
+                <p class="text-danger"></p>
+              </div>
             </div>
-            <input
-              type="text"
-              name="email"
-              placeholder="Email"
-              class="form__input"
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Contraseña"
-              class="form__input"
-            />
-            <input
-              type="password"
-              name="password_confirm"
-              placeholder="Confirmar contraseña"
-              class="form__input"
-            />
+            <div class="input__container email">
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Email"
+                class="form__input"
+              />
+              <p class="text-danger"></p>
+            </div>
+
+            <div class="input__container password">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Contraseña"
+                class="form__input"
+              />
+              <p class="text-danger"></p>
+            </div>
+            <div class="input__container pass-confirm">
+              <input
+                type="password"
+                name="password_confirm"
+                id="passwordConfirm"
+                placeholder="Confirmar contraseña"
+                class="form__input"
+              />
+              <p class="text-danger"></p>
+            </div>
             <button class="form__button">Agregar usuario</button>
           </form>
         </div>
@@ -98,17 +124,17 @@
         </tr>
         <% users.forEach(user => { %>
         <tr class="table__row">
-          <td><%=user.dataValues.idusers%></td>
-          <td><%=user.dataValues.first_name%></td>
-          <td><%=user.dataValues.last_name%></td>
+          <td><%=user.idusers%></td>
+          <td><%=user.first_name%></td>
+          <td><%=user.last_name%></td>
           <td><%=user.email%></td>
           <td class="td__options">
-            <a href="/admin/users/edit/<%=user.dataValues.idusers%>">
+            <a href="/admin/users/edit/<%=user.idusers%>">
               <button class="table__buttons">
                 <i class="fa-solid fa-pen"></i>
               </button>
             </a>
-            <a href="/admin/users/delete/<%=user.dataValues.idusers%>">
+            <a href="/admin/users/delete/<%=user.idusers%>">
               <button class="table__buttons">
                 <i class="fa-solid fa-xmark"></i>
               </button>
@@ -118,6 +144,7 @@
         <% }) %>
       </table>
     </section>
+    <script src="/public/js/registerValidation.js"></script>
   </body>
   <script src="/public/js/adminProducts.js"></script>
 </html>

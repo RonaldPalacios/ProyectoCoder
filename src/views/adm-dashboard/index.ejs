@@ -9,13 +9,20 @@
 
         <article class="card__resume">
           <div class="resume__information">
-            <h2 class="information__quantity"><%=products.length%></h2>
+            <h2 class="information__quantity"><%=productsQuantity%></h2>
             <h4 class="information__title">Cantidad de productos</h4>
           </div>
           <i class="fa-solid fa-boxes-stacked information__icon"></i>
         </article>
 
-        
+        <article class="card__resume">
+          <div class="resume__information">
+            <h2 class="information__quantity"><%=users%></h2>
+            <h4 class="information__title">Cantidad de usuarios</h4>
+          </div>
+          <i class="fa-solid fa-people-group information__icon"></i>
+        </article>
+      </article>
 
       <article class="card__resume">
         <div class="resume__information">
@@ -36,8 +43,8 @@
           </tr>
           <% for(let i = 0; i < products.length; i++) { %>
             <tr class="table__row">
-              <td><%= products[i].dataValues.idproducts %></td>
-              <td><%= products[i].dataValues.name %></td>
+              <td><%= products[i].idproducts %></td>
+              <td><%= products[i].name %></td>
             </tr>
           <% } %>
         </table>

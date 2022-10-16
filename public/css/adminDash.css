@@ -102,8 +102,8 @@ a {
   flex-direction: column;
 }
 .card__resume{
-  background-color: /*#03091c*/ #00ff00;
-  color: #03091c;
+  background-color: #03091c;
+  color: #f3f3f3;
   display: flex;
   justify-content: space-between;
   font-family: Roboto;
@@ -414,7 +414,16 @@ section .class-area {
 .cancel__button:hover{
   background-color: rgba(0, 0, 0, 5%);
 }
-
+.text-danger, .text-danger--edit{
+  position: absolute;
+  margin-top: -1.2rem;
+  font-size: .9rem;
+}
+.text-danger--edit{
+  position: relative;
+  margin-top: -.5rem;
+  color: #b71d1d;
+}
 @media (min-width: 769px) {
   .article__delete{
     width: 30rem;
@@ -494,9 +503,10 @@ section .class-area {
     display: flex;
     justify-content: space-between;
   }
-  .form__group .form__input{
+  .form__group .group__input{
     width: 49%;
   }
+
   .modal__body{
     width: 50vw;
   }

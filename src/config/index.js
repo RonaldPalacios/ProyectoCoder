@@ -1,3 +1,3 @@
-const APIURL = "http://localhost:4001/api";
+const APIURL = "http://localhost:3001/api";
 
 module.exports = { APIURL };

@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const userController = require('../controller/userControllers');
-const userMiddleware = require('../middleware/userMiddleware');
+const userController = require("../controller/userController");
+const userMiddleware = require("../middlewares/userMiddleware");
 
 // Middlewares
-const validationsRegister = require('../middleware/validateRegistreMiddleware');
-const validationsLogin = require('../middleware/validateLoginMiddeware');
-const guestMiddleware = require('../middleware/guessMiddleware');
+const validationsRegister = require("../middlewares/validateRegisterMiddleware");
+const validationsLogin = require("../middlewares/validateLoginMiddleware");
+const guestMiddleware = require("../middlewares/guestMiddleware");
 
 // Login
 router.get("/login", guestMiddleware, userController.login);

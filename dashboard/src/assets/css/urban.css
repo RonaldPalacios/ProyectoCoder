@@ -1,0 +1,67 @@
+:root{
+    --primary:#03091c;
+}
+
+.card-body-urban{
+    background-color: var(--primary);
+    color: white;
+}
+.sidebar{
+    background-color: var(--primary);
+    color: white;
+}
+.section__logo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .logo__top, .logo__bottom{
+    margin: 0;
+    display: inline;
+  }
+  .logo__top{
+    font-size: 1.4rem;
+    font-weight: 800;
+  }
+  .logo__bottom{
+    font-size: .9rem;
+  }
+  .detail__data{
+    font-size: 1rem;
+  }
+  .detail__body{
+    background-color: white;
+    padding: 1rem;
+    border-radius: .25rem;
+  }
+  .detail__title{
+    font-size: 1rem;
+    font-weight: 500;
+    color: black;
+  }
+  .list__body{
+    background: white;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+  .category{
+    color: white;
+    background-color: var(--primary);
+    font-size: 1rem;
+    padding: .25rem;
+    border-radius: .25rem;
+    margin-right: .5rem;
+    height: fit-content;
+  }
+  .page{
+    min-height: 90vh;
+  }
+  .spinner-border{
+    position: absolute;
+    left: 55%;
+    margin-top: 5rem;
+  }

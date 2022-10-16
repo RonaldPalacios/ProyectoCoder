@@ -1,7 +1,7 @@
 <section class="section__navbar">
   <div class="section__logo">
-    <h2 class="logo__top">3PIC</h2>
-    <h3 class="logo__bottom"> Gamer</h3>
+    <h2 class="logo__top">URBAN</h2>
+    <h3 class="logo__bottom">FURNITURE</h3>
   </div>
   <article class="article__items">
     <div class="items__group <%= url == '/' ? 'items__group--active' : null %>">
@@ -24,6 +24,13 @@
       <a href="/admin/users" class="a__item">
         <i class="fa-solid fa-users"></i>
         <p class="item__title">Usuarios</p>
+      </a>
+    </div>
+
+    <div class="items__group <%= url == '#' ? 'items__group--active' : null %>">
+      <a href="http://localhost:3000" class="a__item">
+        <i class="fa-brands fa-react"></i>
+        <p class="item__title">React</p>
       </a>
     </div>
 

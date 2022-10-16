@@ -1,34 +1,13 @@
-import { Router } from "express";
-import { handleErrors, userValidations } from "../middeware";
-import controller from "../controller/user.Controllers";
-const router = Router();
+const express = require("express");
+const router = express.Router();
+const controller = require("../controllers/userController");
 
-router.post(
-    "/create",
-    userValidations.create,
-    handleErrors,
-    controller.createUser
-);
-router.get(
-    "/user",
-    handleErrors,
-    controller.getAll
-);
-router.get(
-    "/user/:id",
-    handleErrors,
-    controller.getUserById
-);
-router.put(
-    "/user/:id",
-    handleErrors,
-    controller.updateUser
-);
-router.delete(
-    "/user/delete/:id",
-    handleErrors,
-    controller.deleteUser
-)
+router.get("/", controller.getUsers);
+router.get("/:id", controller.getUserById);
+router.get("/email/:email", controller.getUserByEmail);
+router.get("/name/:name", controller.getUsersByName);
+router.post("/create", controller.createUser);
+router.put("/update/:id", controller.updateUser);
+router.delete("/delete/:id", controller.deleteUser);
 
-
-export default router;
+module.exports = router;

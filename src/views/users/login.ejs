@@ -10,32 +10,44 @@
     <main class="main">
       <section class="form__container">
         <div class="form__header">
-          <img src="../img/icons/user-login.png" alt="" class="header__image" />
+          <img
+            src="/public/img/icons/user-login.png"
+            alt=""
+            class="header__image"
+          />
           <h2 class="header__title">Iniciar sesión</h2>
           <p class="header__text">Ingresa tus credenciales</p>
         </div>
         <form action="/users/login" method="POST">
           <div class="input__container">
-            <img src="../img/icons/user.png" alt="" class="input__image" />
+            <img src="/public/img/icons/user.png" alt="" class="input__image" />
             <input
               type="email"
               name="email"
+              id="email"
               class="form__input <%= locals.errors && errors.email ? 'form__input--error' : null %>"
               placeholder="Email"
               value="<%= locals.oldData ? oldData.email : null %>"
             />
+            <p class="text-danger email"></p>
             <% if (locals.errors && errors.email) { %>
             <div class="text-danger"><%= errors.email.msg %></div>
             <% } %>
           </div>
           <div class="input__container">
-            <img src="../img/icons/password.png" alt="" class="input__image" />
+            <img
+              src="/public/img/icons/password.png"
+              alt=""
+              class="input__image"
+            />
             <input
               type="password"
               name="password"
+              id="password"
               class="form__input <%= locals.errors && errors.password ? 'form__input--error' : null %>"
               placeholder="Contraseña"
             />
+            <p class="text-danger pass"></p>
             <% if (locals.errors && errors.password) { %>
             <div class="text-danger"><%= errors.password.msg %></div>
             <% } %>
@@ -60,4 +72,5 @@
 
     <%- include('../partials/footer.ejs') %>
   </body>
+  <script src="/public/js/loginValidation.js"></script>
 </html>

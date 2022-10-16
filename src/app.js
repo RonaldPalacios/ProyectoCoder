@@ -3,14 +3,14 @@ const session = require("express-session");
 const app = express();
 const path = require("path");
 const methodOverride = require("method-override");
-const userLoggedMiddleware = require('../src/middleware/userLoggedMiddleware');
+const userLoggedMiddleware = require("./middlewares/userLoggedMiddleware");
 const cookies = require("cookie-parser");
 
 const rutaHome = require("./routes/main.js");
 const userRoutes = require("./routes/userRoutes.js");
 const rutaProduct = require("./routes/productRoutes.js");
 const adminRoutes = require("./routes/adminRoutes");
-const adminMiddleware = require("./middleware/adminMiddleware");
+const adminMiddleware = require("./middlewares/adminMiddleware");
 
 app.use(
   session({

@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const adminController = require("../controller/adminControllers");
+const adminController = require("../controller/adminController");
 const multer = require("multer");
 const path = require("path");
-const productMiddleware = require('../middleware/validateProductMiddleware');
+const productMiddleware = require("../middlewares/validateProduct");
 
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {

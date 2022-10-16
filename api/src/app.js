@@ -1,19 +1,17 @@
-import express from 'express';
-import productsRouter from './routes/productsRoutes';
-import userRouter from './routes/userRoutes.js';
-import morgan from "morgan";
-
+const express = require("express");
+const path = require("path");
 const app = express();
+const port = 3001;
+const cors = require('cors');
+app.use(cors())
 
-//express use*//
+app.listen(port, () => console.log("Server up in 4001"));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.json())
-app.use(morgan('dev'))
 
-//routes//
-/*app.use("/api/products", productsRouter);*/
-app.use('/api/user', userRouter);
-app.use('/api/products', productsRouter);
+// Rutas
+const productsRoutes = require("./routes/productsRoutes");
+const userRoutes = require("./routes/userRoutes");
 
-
-export default app;
+app.use("/api/users", userRoutes);
+app.use("/api/products", productsRoutes);

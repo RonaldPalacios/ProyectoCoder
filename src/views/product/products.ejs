@@ -10,11 +10,13 @@
           <h2><%=filtro%></h2>
           <h4>(<%=data.length%> Resultados)</h4>
           <h5 class="category__subtitle">categorias</h5>
-          <% for(let prop in categories){ %>
-          <a href="/product/category/<%=prop%>"
-            ><p class="category__item"><%=prop%> (<%=categories[prop]%>)</p></a
+          <% categories.forEach(category => { %>
+          <a href="/product/category/<%=category.idcategories%>">
+            <p class="category__item">
+              <%=category.nombre%> (<%=category.products%>)
+            </p></a
           >
-          <% } %>
+          <% })%>
         </div>
       </section>
 
@@ -31,8 +33,7 @@
           </button>
         </form>
         <div class="section__products">
-          <%- include('../partials/product_list', {data: data,
-          mode:'usuario'})%>
+          <%- include('../partials/product_list', {data: data})%>
         </div>
       </section>
     </main>
